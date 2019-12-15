@@ -1,6 +1,9 @@
 # 参考
 
 - https://lab.sonicmoov.com/markup/animation-library-tweenmaxjs/
+  - svgに限らず複雑なアニメーションが簡単に実装出来る。
+- https://github.com/maxwellito/vivus
+  - svgのパスアニメーション特化。アウトラインを書いたあとに色を塗りたいなどはコールバック内で自力。
 
 # ロゴを書く
 
