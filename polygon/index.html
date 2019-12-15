@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <main>
+    <ul>
+      <li>星をSVGで作る</li>
+      <li>四角をSVGで作る</li>
+      <li>変化させる</li>
+      <li>丸への変更が可能か試す</li>
+    </ul>
+    <svg height="200" width="200">
+      <polygon id="poly" points="100,0 50,200 200,80 0,80 150,200" />
+      <!-- <polygon points="0,200 200,200 100,0" /> -->
+    </svg>
+  </main>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+  <script>
+    
+    const poly = document.querySelector("#poly");
+
+    // 星と三角の頂点の数を合わせる必要がある
+    const svgOrigin = [100,0, 50,200, 200,80, 0,80, 150,200];
+    const svgFromOrigin = [100,0, 50,200, 200,80, 0,80, 150,200];
+    const svgToOrigin = [0,200,0,200, 200,200,200,200, 100,0];
+
+    // svgOriginをtoOriginの中身に変化させる
+    TweenMax.to(svgOrigin,.5,svgToOrigin);
+    
+    // svgToOriginに変化中（TweenMaxにより呼び出される）
+    svgToOrigin.onUpdate = () =>{
+      convertToPoints(svgOrigin);
+    };
+
+    // 変化の仮定の座標
+    function convertToPoints(arr){
+      var svg = "";
+      for(let i = 0;i < arr.length; i++){
+        const str = i % 2 ? arr[i] + " " : arr[i] + ",";
+        svg += str;
+      }
+      poly.setAttribute("points",svg)
+    };
+    
+  </script>
+</body>
+</html>
