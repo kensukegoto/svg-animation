@@ -42,5 +42,3 @@ dashoffsetをマイナスから０にすることでアニメーションされ�
 - stroke-dashoffset
 
 破線の開始位置
-
-# vivus.js
